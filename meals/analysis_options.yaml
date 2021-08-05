@@ -4,11 +4,7 @@
 # The issues identified by the analyzer are surfaced in the UI of Dart-enabled
 # IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
 # invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
-include: package:flutter_lints/flutter.yaml
-
+ 
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
@@ -24,6 +20,37 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
+    always_declare_return_types: true
+    always_put_required_named_parameters_first: true
+    always_specify_types: false
+    annotate_overrides: true
+    avoid_bool_literals_in_conditional_expressions: true
+    avoid_classes_with_only_static_members: false
+    avoid_print: true
+    avoid_unnecessary_containers: true
+    await_only_futures: true
+    curly_braces_in_flow_control_structures: true
+    directives_ordering: true
+    empty_catches: true
+    file_names: true
+    omit_local_variable_types: true
+    prefer_adjacent_string_concatenation: true
+    prefer_foreach: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_is_not_operator: true
+    prefer_spread_collections: true
+    sort_constructors_first: true
+    sort_pub_dependencies: true
+    type_annotate_public_apis: false
+    unawaited_futures: true
+    unnecessary_lambdas: true
+    unnecessary_null_in_if_null_operators: true
+    unnecessary_overrides: true
+    unnecessary_parenthesis: true
+    unnecessary_this: true
+    use_function_type_syntax_for_parameters: false
+    use_rethrow_when_possible: true
+    use_setters_to_change_properties: false
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
