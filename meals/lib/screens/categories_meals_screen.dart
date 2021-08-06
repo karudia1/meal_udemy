@@ -1,12 +1,21 @@
 // ignore_for_file: sort_constructors_first
 
 import 'package:flutter/material.dart';
-import 'package:meals/components/meal_item.dart';
-import 'package:meals/models/category.dart';
-import 'package:meals/models/meal.dart';
 
 class CategoriesMealsScreen extends StatelessWidget {
-  final List<Meal> meals;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Receitas'),
+        backgroundColor: Colors.redAccent,
+      ),
+      body: Center(
+        child: Text('Receitas por categoria'),
+      ),
+    );
+
+    /* final List<Meal> meals;
 
   const CategoriesMealsScreen(this.meals);
   
@@ -17,6 +26,7 @@ class CategoriesMealsScreen extends StatelessWidget {
     final categoryMeals = meals.where((meal) {
       return meal.categories.contains(category.id);
     }).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(category.title),
@@ -27,6 +37,6 @@ class CategoriesMealsScreen extends StatelessWidget {
           return MealItem(categoryMeals[index]);
         },
       ),
-    );
+    ); */
   }
 }
