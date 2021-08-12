@@ -1,17 +1,33 @@
 // ignore_for_file: sort_constructors_first
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
+import 'package:meals/models/category.dart';
+import 'package:meals/models/meal.dart';
+import '../components/meal_item.dart';
 
 class CategoriesMealsScreen extends StatelessWidget {
+  final List<Meal> meals;
+  const CategoriesMealsScreen(this.meals);
+
   @override
   Widget build(BuildContext context) {
+    //pega os argumentos que serão utilizados
+    final category = ModalRoute.of(context)!.settings.arguments as Category;
+    // Percorre as comidas recebida como parâmetro
+    final categoryMeals = meals.where((meal) {
+      return meal.categories.contains(category.id);
+    }).toList();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Receitas'),
+        title: Text(category.title),
         backgroundColor: Colors.redAccent,
       ),
-      body: Center(
-        child: Text('Receitas por categoria'),
+      body: ListView.builder(
+        itemCount: categoryMeals.length,
+        itemBuilder: (ctx, index) {
+          return MealItem(categoryMeals[index]);
+        },
       ),
     );
 

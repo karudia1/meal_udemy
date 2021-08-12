@@ -48,6 +48,7 @@ class MealDetailScreen extends StatelessWidget {
             Container(
               height: 300,
               width: double.infinity,
+              //Imagem hospedada remotamente
               child: Image.network(
                 meal.imageUrl,
                 fit: BoxFit.cover,
@@ -93,9 +94,11 @@ class MealDetailScreen extends StatelessWidget {
           ],
         ),
       ),
+      //Botão de comida favorita
       floatingActionButton: FloatingActionButton(
         child: Icon(isFavorite(meal) ? Icons.star : Icons.star_border),
         onPressed: () {
+          //coloca ou retira da lista de favoritos
           onToggleFavorite(meal);
         },
       ),

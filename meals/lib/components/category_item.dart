@@ -1,8 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, unused_element, prefer_const_constructors, sort_constructors_first, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:meals/models/category.dart'; 
-import '../screens/categories_meals_screen.dart';
+import 'package:meals/models/category.dart';
+import 'package:meals/utils/app_routes.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -10,14 +10,19 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem(this.category);
 
   void _selectCategory(BuildContext context) {
+    //Chamada da rota nomeada
+    Navigator.of(context).pushNamed(
+      AppRoutes.CATEGORIES_MEALS,
+      arguments: category,
+    );
     //coloca a proxima tela
-    Navigator.of(context).push(
+    /*  Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) {
           return CategoriesMealsScreen();
         },
       ),
-    );
+    ); */
     /*   Navigator.of(context).pushNamed(
       AppRoutes.CATEGORIES_MEALS,
       arguments: category,

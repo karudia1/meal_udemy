@@ -2,35 +2,35 @@
 
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
-import 'categories_screen.dart';
+import 'package:meals/screens/categories_screen.dart';
+import 'package:meals/screens/favorite_screen.dart';
+import '../components/main_drawer.dart';
 
-import 'favorite_screen.dart';
-
+//controla a navegação com abas
 class TabsScreen extends StatefulWidget {
   final List<Meal> favoriteMeals;
 
   const TabsScreen(this.favoriteMeals);
 
   @override
-  _TabsScreenState createState() => _TabsScreenState();
+  State<TabsScreen> createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  
   int _selectedScreenIndex = 0;
-  late List<Map<String, Object>> _screens;
+  late List<Map<String, dynamic>> _screens;
 
   @override
   void initState() {
     super.initState();
     _screens = [
       {
-        'title': 'Lista de Categorias',
+        'title': 'Lista de categorias',
         'screen': CategoriesScreen(),
       },
       {
-        'title': 'Meus Favoritos',
-        'screen': FavoriteScreen(widget.favoriteMeals),
+        'title': 'Meus favoritos',
+        'screen': FavoriteScreen(widget.favoriteMeals)
       },
     ];
   }
@@ -40,10 +40,38 @@ class _TabsScreenState extends State<TabsScreen> {
       _selectedScreenIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_screens[_selectedScreenIndex]['title']),
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
+      //Icone de navegação
+      drawer: MainDrawer(),
+      body: _screens[_selectedScreenIndex]['screen'],
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Categorias',
+            // backgroundColor: Theme.of(context).primaryColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favoritos',
+            //  backgroundColor: Theme.of(context).primaryColor,
+          ),
+        ],
+        backgroundColor: Theme.of(context).primaryColor,
+        currentIndex: _selectedScreenIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.amberAccent[100],
+        iconSize: 30,
+        onTap: _selectScreen,
+        //type: BottomNavigationBarType.shifting,
+      ),
     );
   }
 }

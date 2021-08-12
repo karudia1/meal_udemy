@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: unused_element, prefer_const_constructors, use_key_in_widget_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:meals/utils/app_routes.dart';
@@ -44,13 +44,16 @@ class MainDrawer extends StatelessWidget {
           ),
           SizedBox(height: 20),
           _createItem(
-            Icons.restaurant,
-            'Refeições',
+            Icons.restaurant, 'Refeições',
+            //coloca uma nova tela (rota) e tira a última 
+            //precisa fazer colocar drawer nas outras telas para voltar
             () => Navigator.of(context).pushReplacementNamed(AppRoutes.HOME),
           ),
           _createItem(
             Icons.settings,
             'Configurações',
+            //Coloca telas(rotas) uma em cima da outra
+            //() => Navigator.of(context).pushNamed(AppRoutes.SETTINGS)),
             () =>
                 Navigator.of(context).pushReplacementNamed(AppRoutes.SETTINGS),
           ),
