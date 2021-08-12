@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, unused_element, avoid_print, prefer_const_constructors, sort_constructors_first
+// ignore_for_file: sort_constructors_first, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
